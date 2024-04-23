@@ -1,4 +1,4 @@
-package com.scotiabank.pe.retoJMT.model;
+package com.scotiabank.pe.retoJMT.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;

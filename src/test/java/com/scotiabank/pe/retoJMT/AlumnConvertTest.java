@@ -1,7 +1,7 @@
 package com.scotiabank.pe.retoJMT;
 
 import com.scotiabank.pe.retoJMT.dto.AlumnDto;
-import com.scotiabank.pe.retoJMT.model.Alumn;
+import com.scotiabank.pe.retoJMT.entity.Alumn;
 
 public class AlumnConvertTest {
     public static Alumn alumnTest(Integer id){

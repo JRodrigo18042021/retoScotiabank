@@ -1,6 +1,6 @@
 package com.scotiabank.pe.retoJMT.repository;
 
-import com.scotiabank.pe.retoJMT.model.Alumn;
+import com.scotiabank.pe.retoJMT.entity.Alumn;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;

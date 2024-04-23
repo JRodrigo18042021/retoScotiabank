@@ -2,7 +2,7 @@ package com.scotiabank.pe.retoJMT;
 
 import com.scotiabank.pe.retoJMT.constants.AlumnConstants;
 import com.scotiabank.pe.retoJMT.dto.AlumnDto;
-import com.scotiabank.pe.retoJMT.model.Alumn;
+import com.scotiabank.pe.retoJMT.entity.Alumn;
 import com.scotiabank.pe.retoJMT.repository.AlumnDbcRepository;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;

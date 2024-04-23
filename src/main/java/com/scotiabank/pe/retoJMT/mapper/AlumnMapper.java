@@ -1,7 +1,7 @@
 package com.scotiabank.pe.retoJMT.mapper;
 
 import com.scotiabank.pe.retoJMT.dto.AlumnDto;
-import com.scotiabank.pe.retoJMT.model.Alumn;
+import com.scotiabank.pe.retoJMT.entity.Alumn;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
