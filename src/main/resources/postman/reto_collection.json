@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "b31524a0-aef4-4737-a126-9b1d75047270",
+		"name": "Reto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23434389"
+	},
+	"item": [
+		{
+			"name": "alumns Active",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8090/api/alumn/active"
+			},
+			"response": []
+		},
+		{
+			"name": "save alumn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Pepito\",\r\n    \"lastName\": \"Perez\",\r\n    \"state\": \"activo\",\r\n    \"age\": 18\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8090/api/alumn"
+			},
+			"response": []
+		}
+	]
+}
