@@ -36,5 +36,4 @@ public class AlumnController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(alumnDtoFlux);
     }
-
 }
