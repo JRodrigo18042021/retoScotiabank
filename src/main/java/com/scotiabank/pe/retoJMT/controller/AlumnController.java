@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.validation.constraints.Pattern;
+
 @RestController
 @RequestMapping(AlumnConstants.API_REQUEST)
 @Validated
@@ -30,8 +32,13 @@ public class AlumnController {
     @GetMapping("/active")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "alumnos activos", description = "Endpoint para listar solo alumnos activos")
-    public ResponseEntity<Flux<AlumnDto>> getActiveAlumns() {
-        var alumnDtoFlux = service.getActiveAlumns();
+    public ResponseEntity<Flux<AlumnDto>> getActiveAlumns(
+            @Pattern(regexp = "true|false", message = "El estado debe ser 'true' o 'false'")
+            @RequestParam(defaultValue = "true")
+            String state
+    ) {
+        boolean isActive = Boolean.parseBoolean(state);
+        var alumnDtoFlux = service.getActiveAlumns(isActive);
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(alumnDtoFlux);

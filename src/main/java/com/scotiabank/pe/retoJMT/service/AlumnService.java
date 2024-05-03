@@ -7,6 +7,6 @@ import reactor.core.publisher.Mono;
 public interface AlumnService {
     Mono<Void> saveAlumn(AlumnDto alumnDto);
 
-    Flux<AlumnDto> getActiveAlumns();
+    Flux<AlumnDto> getActiveAlumns(Boolean state);
 
 }

@@ -56,9 +56,17 @@ class RetoJmtControllerApplicationTests {
             case NOT_FOUND_404:
                 Mockito.when(alumnDbcRepository.findAlumnByState(Mockito.any())).thenReturn(Flux.empty());
                 client.get()
-                        .uri(url.concat(AlumnConstants.API_REQUEST).concat("/active"))
+                        .uri(url.concat(AlumnConstants.API_REQUEST).concat("/active?state=false"))
                         .exchange()
                         .expectStatus().isNotFound()
+                        .expectHeader().contentType(MediaType.APPLICATION_JSON)
+                        .expectBodyList(AlumnDto.class);
+            case BAD_REQUEST_400:
+                alumnDto = AlumnConvertTest.alumnDtoTestEmpty();
+                client.get()
+                        .uri(url.concat(AlumnConstants.API_REQUEST).concat("/active?state=false1"))
+                        .exchange()
+                        .expectStatus().isBadRequest()
                         .expectHeader().contentType(MediaType.APPLICATION_JSON)
                         .expectBodyList(AlumnDto.class);
         }

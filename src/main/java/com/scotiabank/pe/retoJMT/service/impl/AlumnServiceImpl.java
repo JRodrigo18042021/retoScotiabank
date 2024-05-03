@@ -32,11 +32,12 @@ public class AlumnServiceImpl implements AlumnService {
     }
 
     @Override
-    public Flux<AlumnDto> getActiveAlumns() {
+    public Flux<AlumnDto> getActiveAlumns(Boolean state) {
         log.info(AlumnConstants.MESSAGE_INIT_ACTIVE_ALUMNS);
-        return alumnDbcRepository.findAlumnByState(StatusEnum.activo.name())
+        StatusEnum statusEnum = Boolean.TRUE.equals(state) ? StatusEnum.activo : StatusEnum.inactivo;
+        return alumnDbcRepository.findAlumnByState(statusEnum.name())
                 .map(alumnMapper::mapToAlumnDto)
-                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, AlumnConstants.MESSAGE_ALUMN_NO_ACTIVE_ALUMNS)));
+                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, String.format(AlumnConstants.MESSAGE_ALUMN_NO_ACTIVE_ALUMNS, statusEnum.name()))));
     }
 
 }

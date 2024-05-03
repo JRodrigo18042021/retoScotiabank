@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -38,6 +40,19 @@ public class GlobalAdviceAlumn {
                 .code(status.value())
                 .error(status.getReasonPhrase())
                 .description(Collections.singletonList(ex.getReason()))
+                .build();
+        return new ResponseEntity<>(resultaRequestException, status);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus
+    public ResponseEntity<RequestException> constraintViolationException(ConstraintViolationException ex) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        List<String> cadenaErrors = ex.getConstraintViolations().stream().map(ConstraintViolation::getMessage).collect(Collectors.toList());
+        RequestException resultaRequestException = RequestException.builder()
+                .code(status.value())
+                .error(status.getReasonPhrase())
+                .description(cadenaErrors)
                 .build();
         return new ResponseEntity<>(resultaRequestException, status);
     }
